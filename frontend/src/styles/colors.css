@@ -1,0 +1,41 @@
+:root {
+  /* Neutral / Black */
+  --black-01: #f2f2f2;
+  --black-02: #d9d9d9;
+  --black-03: #a6a6a6;
+  --black-04: #808080;
+  --black-05: #666666;
+  --black-06: #4d4d4d;
+  --black-07: #333333;
+  --black-08: #262626;
+  --black-09: #1a1a1a;
+  --black-10: #0d0d0d;
+
+  /* Blue */
+  --blue-01: #f0f8ff;
+  --blue-02: #d6ebff;
+  --blue-03: #a6d4ff;
+  --blue-04: #73baf9;
+  --blue-05: #4a9df0;
+  --blue-06: #297dd8;
+  --blue-07: #1f5bb5;
+  --blue-08: #174080;
+  --blue-09: #0f2d52;
+  --blue-10: #0a1a2f;
+  --blue-primary: var(--blue-06);
+  --blue-accent: var(--blue-04);
+
+  /* Purple */
+  --purple-01: #f4ebff;
+  --purple-02: #e0ccff;
+  --purple-03: #c4a3f7;
+  --purple-04: #a87cec;
+  --purple-05: #8c54df;
+  --purple-06: #7136c7;
+  --purple-07: #56289e;
+  --purple-08: #3d1c72;
+  --purple-09: #221042;
+  --purple-10: #09001d; /* darkest matte purple */
+  --purple-primary: var(--purple-06);
+  --purple-accent: var(--purple-04);
+}

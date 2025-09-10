@@ -2,42 +2,38 @@
   import ChatHeader from "./ChatHeader.svelte";
   import Message from "./Message.svelte";
   import type { MessageContent } from "../../../types/chat";
+  import SendBox from "./SendBox.svelte";
 
-  const fakemsg: MessageContent[] = [
-    {
-      type: "user",
+  const fakemsg: MessageContent[] = Array.from({ length: 20 }, (v, i) => {
+    return {
+      type: i % 3 === 0 ? "user" : "sender",
       content: "Nulla est anim sunt labore ",
-    },
-    {
-      type: "user",
-      content:
-        "Nulla est anim sunt labore sint anim officia sint quis voluptate.",
-    },
-    {
-      type: "sender",
-      content:
-        "Nulla est anim sunt labore sint anim officia sint quis voluptate. Nulla est anim sunt labore sint anim officia sint quis voluptate. Nulla est anim sunt labore sint anim officia sint quis voluptate.",
-    },
-    {
-      type: "sender",
-      content:
-        "Nulla est anim sunt labore sint anim officia sint quis voluptate.",
-    },
-  ];
+      timeStamp: new Date(),
+    };
+  });
 </script>
 
+<ChatHeader />
+
 <div class="chat-body">
-  <ChatHeader />
   <div class="message-body">
     {#each fakemsg as msg}
       <Message {...msg} />
     {/each}
   </div>
-  <div class="send-box-container"></div>
 </div>
+<SendBox />
 
 <style>
   .chat-body {
-    height: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+
+  .message-body {
+    width: 80%;
+    margin: auto;
   }
 </style>

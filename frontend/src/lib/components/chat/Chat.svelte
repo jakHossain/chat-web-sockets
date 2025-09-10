@@ -25,8 +25,10 @@
   }
 
   .chat-body-container {
+    display: flex;
     background-color: var(--purple-10);
-    flex: 1;
     height: 100%;
+    width: 100%;
+    flex-direction: column;
   }
 </style>

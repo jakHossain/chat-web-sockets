@@ -20,7 +20,7 @@
 
   .chat-navigation-container {
     background-color: var(--blue-09);
-    width: 30%;
+    max-width: 400px;
     height: 100%;
   }
 
@@ -28,7 +28,7 @@
     display: flex;
     background-color: var(--purple-10);
     height: 100%;
-    width: 100%;
+    flex: 1;
     flex-direction: column;
   }
 </style>

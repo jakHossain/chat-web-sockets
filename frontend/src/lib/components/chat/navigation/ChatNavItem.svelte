@@ -1,10 +1,12 @@
 <div class="chat-item">
-  <div class="chat-icon">
-    <img src="https://dummyimage.com/40x40.png?text=Chat" alt="" />
-  </div>
+  <img
+    class="chat-icon"
+    src="https://dummyimage.com/40x40.png?text=Chat"
+    alt=""
+  />
   <div class="content-preview">
     <h4>Chat name</h4>
-    <p>
+    <p class="message-preview">
       Preview of last chat message long message can go here and here and here
     </p>
   </div>
@@ -15,6 +17,7 @@
     align-items: center;
     background-color: var(--blue-08);
     border-radius: 8px;
+    box-sizing: border-box;
     display: flex;
     gap: 8px;
     padding: 8px;
@@ -28,17 +31,22 @@
   }
 
   .chat-icon {
+    display: block;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     overflow: hidden;
+    flex-shrink: 0;
   }
 
-  .chat-icon img {
-    width: 100%;
-    height: 100%;
-  }
   .content-preview {
-    flex: 1;
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .message-preview {
+    overflow: hidden;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
   }
 </style>

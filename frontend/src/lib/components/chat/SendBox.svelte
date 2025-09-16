@@ -1,7 +1,6 @@
 <script lang="ts">
   import { SendHorizontal } from "@lucide/svelte";
 
-  let inputElement = $state(null);
   let isFocused = $state(false);
 </script>
 

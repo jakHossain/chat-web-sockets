@@ -3,6 +3,7 @@
   import Message from "./Message.svelte";
   import type { MessageContent } from "../../../types/chat";
   import SendBox from "./SendBox.svelte";
+  import { onMount } from "svelte";
 
   const fakemsg: MessageContent[] = Array.from({ length: 20 }, (v, i) => {
     return {
@@ -11,11 +12,19 @@
       timeStamp: new Date(),
     };
   });
+
+  let messageContainer: HTMLDivElement | null = $state(null);
+
+  onMount(() => {
+    if (messageContainer) {
+      messageContainer.scrollTop = messageContainer.scrollHeight;
+    }
+  });
 </script>
 
 <ChatHeader />
 
-<div class="chat-body">
+<div class="chat-body" bind:this={messageContainer}>
   <div class="message-body">
     {#each fakemsg as msg}
       <Message {...msg} />

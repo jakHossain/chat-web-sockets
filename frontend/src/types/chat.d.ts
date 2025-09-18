@@ -15,9 +15,9 @@ export interface MessageType {
   JSONStringify(): String;
 }
 
-export interface ChatThread {
+export interface ChatThreadType {
   id: String;
-  memberIds: Set;
+  memberIds: Set<String>;
   messages: MessageType[];
   createdAt: Date;
   sendMessage(senderId: String, message: MessageType);

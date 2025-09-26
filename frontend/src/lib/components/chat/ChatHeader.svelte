@@ -2,7 +2,7 @@
   <div class="icon">
     <img src="https://dummyimage.com/200x200.png" alt="" />
   </div>
-  <h4>Chat title</h4>
+  <h4 class="chat-name">Chat title</h4>
 </div>
 
 <style>
@@ -15,13 +15,19 @@
   }
 
   .icon {
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
+    height: 40px;
     overflow: hidden;
+    min-width: 40px;
+    width: 40px;
   }
   .icon img {
     width: 100%;
     height: 100%;
+  }
+
+  .chat-name {
+    text-wrap: nowrap;
+    overflow: hidden;
   }
 </style>

@@ -33,6 +33,7 @@
   }
   .message-writer {
     background-color: var(--purple-09);
+
     border-radius: 20px;
     border: none;
     box-shadow: rgba(255, 255, 255, 0.15) 2px 2px 4px;

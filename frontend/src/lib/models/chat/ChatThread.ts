@@ -1,4 +1,4 @@
-import type { ChatThreadType, MessageType } from "../types/chat";
+import type { MessageType, ChatThreadType } from "../../types/chat";
 
 export class ChatThread implements ChatThreadType {
   #id;
@@ -7,8 +7,8 @@ export class ChatThread implements ChatThreadType {
   #createdAt;
 
   constructor(
-    id: String,
-    memberIds: Set<String> | String[],
+    id: string,
+    memberIds: Set<string> | string[],
     createdAt: null | Date
   ) {
     this.#id = id;
@@ -32,7 +32,7 @@ export class ChatThread implements ChatThreadType {
     return this.#createdAt;
   }
 
-  sendMessage(senderId: String, message: MessageType) {
+  sendMessage(senderId: string, message: MessageType) {
     //TODO
   }
 }

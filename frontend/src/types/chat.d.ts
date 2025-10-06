@@ -5,20 +5,20 @@ export interface MessageContent {
 }
 
 export interface MessageType {
-  content: String;
+  content: string;
   clientCreatedAt: Date;
   serverReceivedAt: null | Date;
-  senderId: String;
-  threadId: String;
+  senderId: string;
+  threadId: string;
   edited: boolean;
-  editMessage(newContent: String): void;
-  JSONStringify(): String;
+  editMessage(newContent: string): void;
+  JSONstringify(): string;
 }
 
 export interface ChatThreadType {
-  id: String;
-  memberIds: Set<String>;
+  id: string;
+  memberIds: Set<string>;
   messages: MessageType[];
   createdAt: Date;
-  sendMessage(senderId: String, message: MessageType);
+  sendMessage(senderId: string, message: MessageType);
 }

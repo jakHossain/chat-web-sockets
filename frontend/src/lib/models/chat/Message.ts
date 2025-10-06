@@ -1,4 +1,4 @@
-import type { MessageType } from "../types/chat";
+import type { MessageType } from "../../types/chat";
 export class Message implements MessageType {
   #senderId; //user id of sender
   #threadId; //id of chat thread message was sent to
@@ -7,7 +7,7 @@ export class Message implements MessageType {
   #clientCreatedAt; //date time object to represent when client initially created message
   #serverReceivedAt: null | Date; //date time obejct to represent when server acknowledged message
 
-  constructor(content: String, senderId: String, threadId: String) {
+  constructor(content: string, senderId: string, threadId: string) {
     this.#senderId = senderId;
     this.#threadId = threadId;
     this.#content = content;
@@ -42,9 +42,9 @@ export class Message implements MessageType {
 
   /**
    * Update the string content of the message
-   * @param newContent String content to update message item with
+   * @param newContent string content to update message item with
    */
-  editMessage(newContent: String): void {
+  editMessage(newContent: string): void {
     this.#edited = true;
     this.#content = newContent;
   }
@@ -53,7 +53,7 @@ export class Message implements MessageType {
    *
    * @returns a stringified JSON object that represents a message
    */
-  JSONStringify(): String {
+  JSONstringify(): string {
     const messageObject = {
       content: this.#content,
       timeStamp: this.#clientCreatedAt.toISOString(),

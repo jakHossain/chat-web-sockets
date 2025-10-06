@@ -3,6 +3,8 @@
   import "./styles/typography.css";
   import "./styles/colors.css";
   import "./app.css";
+  import { loadUsers } from "$lib/util/mockApi";
+  loadUsers();
 </script>
 
 <main>

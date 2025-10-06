@@ -1,0 +1,20 @@
+[
+  {
+    "id": "c1",
+    "memberIds": ["u1", "u2", "u3"],
+    "messages": [],
+    "createdAt": "2025-10-02T09:00:00.000Z"
+  },
+  {
+    "id": "c2",
+    "memberIds": ["u1", "u3", "u4", "u5"],
+    "messages": [],
+    "createdAt": "2025-10-02T09:05:00.000Z"
+  },
+  {
+    "id": "c3",
+    "memberIds": ["u2", "u4"],
+    "messages": [],
+    "createdAt": "2025-10-02T09:10:00.000Z"
+  }
+]

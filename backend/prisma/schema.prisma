@@ -1,0 +1,85 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url = env("DATABASE_URL")
+}
+
+model User {
+    id  String  @id @default(uuid()) @db.Uuid
+    userName String    @db.VarChar(14) @unique
+    firstName String   @db.VarChar(100)
+    lastName String    @db.VarChar(100)
+    createdOn DateTime  @default(now()) @db.Timestamptz()
+    lastActive DateTime @default(now()) @db.Timestamptz()
+
+    //Relationships
+    //OTM
+    initiatedRelationships Relationships[]   @relation("UserRelationships")
+    receivedRelationships Relationships[]   @relation("FriendOf")
+    sentMessages Messages[] @relation("UserMessages")
+    userCreatedChatThreads ChatThreads[] @relation("UserOwnedChats")
+    memberInChat ChatMembers[] @relation("MemberInChat")
+}
+
+enum RelationshipStatus {
+    PENDING
+    ACCEPTED 
+    BLOCKED
+}
+
+model Relationships {
+    id BigInt   @id @default(autoincrement()) 
+    userId1 String? @db.Uuid
+    userId2 String? @db.Uuid
+    status  RelationshipStatus  @default(PENDING)
+    createdOn DateTime  @default(now()) @db.Timestamptz()
+
+    //Relationships
+    //MTO
+
+    //User is option in the event user deletes account, the relationship should remain but the user is anonmyized
+    user1 User?   @relation("UserRelationships", fields: [userId1], references: [id], onDelete: SetNull)
+    user2 User?   @relation("FriendOf", fields: [userId2], references: [id], onDelete: SetNull)
+
+    @@unique([userId1, userId2])
+}
+
+model ChatThreads {
+    id String   @id @default(uuid()) @db.Uuid
+    createdOn DateTime  @default(now()) @db.Timestamptz()
+    ownerId String? @db.Uuid
+    name String @db.VarChar(120)
+
+    //OTM
+    chatMessages Messages[] @relation("ChatMessages")
+    chatMembers ChatMembers[] @relation("ChatMembers")
+
+    //MTO
+    chatOwner User? @relation("UserOwnedChats", fields: [ownerId], references: [id], onDelete: SetNull)
+}
+
+model Messages {
+    id BigInt   @id @default(autoincrement())
+    chatId String   @db.Uuid
+    senderId String?    @db.Uuid
+    createdOn DateTime  @default(now()) @db.Timestamptz()
+    content String  @db.Text
+
+    //MTO
+    chatThread ChatThreads  @relation("ChatMessages", fields: [chatId], references: [id], onDelete: Cascade)
+    sender User?    @relation("UserMessages", fields: [senderId], references: [id], onDelete: SetNull)
+}
+
+model ChatMembers {
+    id BigInt   @id @default(autoincrement())
+    chatId String   @db.Uuid
+    userId String?  @db.Uuid
+    joined DateTime @default(now()) @db.Timestamptz()
+
+    //MTO
+    chatThread ChatThreads @relation("ChatMembers", fields: [chatId], references: [id], onDelete: Cascade)
+    member User? @relation("MemberInChat", fields: [userId], references: [id], onDelete: SetNull)
+}

@@ -1,4 +1,4 @@
-import type { MessageType, ChatThreadType } from "../../types/chat";
+import type { MessageType, ChatThreadType } from "../../../types/chat";
 
 export class ChatThread implements ChatThreadType {
   #id;

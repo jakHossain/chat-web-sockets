@@ -59,7 +59,16 @@ CREATE TABLE "ChatMembers" (
 CREATE UNIQUE INDEX "User_userName_key" ON "User"("userName");
 
 -- CreateIndex
+CREATE INDEX "Relationships_userId1_userId2_idx" ON "Relationships"("userId1", "userId2");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Relationships_userId1_userId2_key" ON "Relationships"("userId1", "userId2");
+
+-- CreateIndex
+CREATE INDEX "Messages_chatId_createdOn_idx" ON "Messages"("chatId", "createdOn");
+
+-- CreateIndex
+CREATE INDEX "ChatMembers_chatId_idx" ON "ChatMembers"("chatId");
 
 -- AddForeignKey
 ALTER TABLE "Relationships" ADD CONSTRAINT "Relationships_userId1_fkey" FOREIGN KEY ("userId1") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;

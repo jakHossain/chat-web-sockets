@@ -14,6 +14,7 @@ model User {
     lastName String    @db.VarChar(100)
     createdOn DateTime  @default(now()) @db.Timestamptz()
     lastActive DateTime @default(now()) @db.Timestamptz()
+    test String @default("Potato")
 
     //Relationships
     //OTM
@@ -45,6 +46,7 @@ model Relationships {
     user2 User?   @relation("FriendOf", fields: [userId2], references: [id], onDelete: SetNull)
 
     @@unique([userId1, userId2])
+    @@index([userId1, userId2])
 }
 
 model ChatThreads {
@@ -71,6 +73,9 @@ model Messages {
     //MTO
     chatThread ChatThreads  @relation("ChatMessages", fields: [chatId], references: [id], onDelete: Cascade)
     sender User?    @relation("UserMessages", fields: [senderId], references: [id], onDelete: SetNull)
+
+
+    @@index([chatId, createdOn])
 }
 
 model ChatMembers {
@@ -82,4 +87,6 @@ model ChatMembers {
     //MTO
     chatThread ChatThreads @relation("ChatMembers", fields: [chatId], references: [id], onDelete: Cascade)
     member User? @relation("MemberInChat", fields: [userId], references: [id], onDelete: SetNull)
+
+    @@index([chatId])
 }
